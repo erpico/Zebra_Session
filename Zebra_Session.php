@@ -367,6 +367,7 @@ class Zebra_Session {
     public function destroy($session_id) {
 
         // delete the current session from the database
+        /*
         return $this->query('
 
             DELETE FROM
@@ -375,7 +376,8 @@ class Zebra_Session {
                 session_id = ?
 
         ', $session_id) !== false;
-
+        */
+        return true;
     }
 
     /**
@@ -512,6 +514,7 @@ class Zebra_Session {
 
         // if we are *not* in read-only mode
         // read-only sessions do not need a lock
+        /*
         if (!$this->read_only) {
 
             // try to obtain a lock with the given name and timeout
@@ -523,6 +526,7 @@ class Zebra_Session {
             }
 
         }
+        */
 
         $hash = '';
 
