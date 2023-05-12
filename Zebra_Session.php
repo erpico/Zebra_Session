@@ -346,13 +346,13 @@ class Zebra_Session {
     public function close() {
 
         // release the lock associated with the current session
-        return $this->query('
+        /*return $this->query('
 
             SELECT
                 RELEASE_LOCK(?)
 
-        ', $this->session_lock) !== false;
-
+        ', $this->session_lock) !== false;*/
+        return true;
     }
 
     /**
