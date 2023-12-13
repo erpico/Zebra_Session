@@ -390,14 +390,18 @@ class Zebra_Session {
     public function gc() {
 
         // delete expired sessions from database
-        $this->query('
-
-            DELETE FROM
-                ' . $this->table_name . '
-            WHERE
-                session_expire < ?
-
-        ', time());
+        try {
+            $this->query('
+    
+                DELETE FROM
+                    ' . $this->table_name . '
+                WHERE
+                    session_expire < ?
+    
+            ', time());
+        } catch (Exception $e) {
+            error_log("Failure in sessions gc: ".$e->getMessage());
+        }
 
         return true;
 
